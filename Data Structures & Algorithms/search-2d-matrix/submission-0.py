@@ -1,0 +1,15 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        for row in matrix:
+            l = 0
+            r = len(row) - 1
+            if target >= row[l] and target <= row[r]:
+                while l <= r:
+                    mid = l + ((r - l) // 2)
+                    if row[mid] == target:
+                        return True
+                    elif row[mid] > target:
+                        r = mid - 1
+                    else:
+                        l = mid + 1
+        return False
